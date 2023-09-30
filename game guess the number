@@ -1,38 +1,40 @@
-import java.util.Random;
-import java.util.Scanner;
+import java.util.Random; // Import the Random class for generating random numbers.
+import java.util.Scanner; // Import the Scanner class for user input.
+
 public class GuessTheNumber {
     public static void main(String[] args) {
         // Generate a random number between 1 and 50
-        Random random = new Random();
-        int num = random.nextInt(1,50);
+        Random random = new Random(); // Create a Random object.
+        int num = random.nextInt(1, 50); // Generate a random integer between 1 (inclusive) and 50 (exclusive).
+
         // Get user input
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a number between 1 and 50:");
-        int guess = scanner.nextInt();
+        Scanner scanner = new Scanner(System.in); // Create a Scanner object for user input.
+        System.out.println("Enter a number between 1 and 50:"); // Prompt the user to enter a number.
+        int guess = scanner.nextInt(); // Read the user's input as an integer.
+
         // Compare the user's guess to the random number
-        int chances = 5;
-        while (chances > 0) {
+        int chances = 5; // Initialize the number of chances the user has to 5.
+        while (chances > 0) { // Start a loop that continues while chances are greater than 0.
 
-            if (num == guess) {
-                System.out.println("You won!");
-                break;
-            } else if (num < guess) {
-                System.out.println("Your guess is too high. Try again:");
-                guess = scanner.nextInt();
-                chances--;
-            } else {
-                System.out.println("Your guess is too low. Try again:");
-                guess = scanner.nextInt();
-
-                chances--;
-                if (chances > 0) {
-                    System.out.println("Chances left: " + chances);
+            if (num == guess) { // Check if the user's guess matches the random number.
+                System.out.println("You won!"); // Print a message indicating the user won.
+                break; // Exit the loop.
+            } else if (num < guess) { // Check if the user's guess is too high.
+                System.out.println("Your guess is too high. Try again:"); // Prompt the user to guess lower.
+                guess = scanner.nextInt(); // Read the user's new guess.
+                chances--; // Decrement the remaining chances.
+            } else { // The user's guess is too low.
+                System.out.println("Your guess is too low. Try again:"); // Prompt the user to guess higher.
+                guess = scanner.nextInt(); // Read the user's new guess.
+                chances--; // Decrement the remaining chances.
+                if (chances > 0) { // Check if there are chances left.
+                    System.out.println("Chances left: " + chances); // Display the remaining chances.
                 }
             }
         }
         // If the user runs out of chances, print a message
-        if (chances == 0) {
-            System.out.println("You ran out of chances. The number was " + num);
+        if (chances == 0) { // Check if the user has no chances left.
+            System.out.println("You ran out of chances. The number was " + num); // Print a message revealing the correct number.
         }
     }
 }
